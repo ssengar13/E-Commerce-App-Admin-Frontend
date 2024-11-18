@@ -9,8 +9,6 @@ const Login = () => {
             <br />
             <br />
             <br />
-            <br />
-            <br />
             <div className='my-5 bg-white rounded-3 mx-auto p-4' style={{ "width": '600px' }}>
                 <h3 className='text-center'>Login</h3>
                 <p className='text-center'>Login to your Account to Continue.</p>
