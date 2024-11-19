@@ -29,7 +29,7 @@ const MainLayout = () => {
                 </div>
                 <Menu
                     theme="dark"
-                    style={{ "margin-top": "20px" }}
+                    style={{ "marginTop": "20px" }}
                     mode="inline"
                     defaultSelectedKeys={['']}
                     onClick={({ key }) => {
@@ -103,7 +103,7 @@ const MainLayout = () => {
                             label: 'Orders',
                         },
                         {
-                            key: 'blog',
+                            key: 'blogs',
                             icon: <LiaBlogSolid className='fs-5' />,
                             label: 'Blogs',
                             children: [
