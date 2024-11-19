@@ -130,7 +130,7 @@ const MainLayout = () => {
                             ]
                         },
                         {
-                            key: 'enquiry',
+                            key: 'enquiries',
                             icon: <TbHelpSquareFilled className='fs-5' />,
                             label: 'Enquiry',
                         },
