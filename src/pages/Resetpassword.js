@@ -11,7 +11,7 @@ const Resetpassword = () => {
             <br />
             <br />
             <div className='my-5 bg-white rounded-3 mx-auto p-4' style={{ "width": '600px' }}>
-                <h3 className='text-center'>Reset Password</h3>
+                <h3 className='text-center title'>Reset Password</h3>
                 <p className='text-center fs-8'>
                     Please Enter your new Password.
                 </p>

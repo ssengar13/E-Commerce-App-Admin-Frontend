@@ -147,16 +147,18 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* Chart Section */}
             <div className="mt-4">
                 <h3 className="mb-5 title py-3">Monthly Sales Chart</h3>
-                <canvas id="salesChart"></canvas>
+                <div>
+                    <canvas id="salesChart"></canvas>
+                </div>
             </div>
 
-            {/* Table Section */}
             <div className="mt-4">
                 <h3 className="mb-5 title py-3">Monthly Sales Data</h3>
-                <Table columns={columns1} dataSource={data1} />
+                <div>
+                    <Table columns={columns1} dataSource={data1} />
+                </div>
             </div>
         </div>
     );

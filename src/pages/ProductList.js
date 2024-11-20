@@ -1,5 +1,8 @@
 import React from 'react'
 import { Table } from "antd";
+// import { BiEdit } from "react-icons/bi";
+// import { MdDelete } from "react-icons/md";
+
 const columns = [
     {
         title: "SNo",
@@ -31,7 +34,7 @@ for (let i = 0; i < 46; i++) {
 const ProductList = () => {
     return (
         <div>
-            <h3 className="mb-4">Products List</h3>
+            <h3 className="mb-4 title">Products List</h3>
             <div>
                 <Table columns={columns} dataSource={data1} />
             </div>

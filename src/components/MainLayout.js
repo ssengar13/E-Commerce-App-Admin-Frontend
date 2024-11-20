@@ -4,6 +4,7 @@ import { SiProducthunt, SiBrandfolder } from "react-icons/si";
 import { LiaBlogSolid } from "react-icons/lia";
 import { IoIosNotifications } from "react-icons/io";
 import { FaClipboardList } from "react-icons/fa";
+import { RiCouponLine } from "react-icons/ri"
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
 import { TbHelpSquareFilled } from "react-icons/tb";
 import { BiCategory } from "react-icons/bi";
@@ -11,6 +12,7 @@ import { LuUsers2 } from "react-icons/lu";
 import { Button, Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -98,6 +100,23 @@ const MainLayout = () => {
                             ],
                         },
                         {
+                            key: "marketing",
+                            icon: <RiCouponLine className="fs-4" />,
+                            label: "Marketing",
+                            children: [
+                                {
+                                    key: "coupon",
+                                    icon: <RiCouponLine className="fs-4" />,
+                                    label: "Add Coupon",
+                                },
+                                {
+                                    key: "coupon-list",
+                                    icon: <RiCouponLine className="fs-4" />,
+                                    label: "Coupon List",
+                                },
+                            ],
+                        },
+                        {
                             key: 'orders',
                             icon: <FaClipboardList className='fs-5' />,
                             label: 'Orders',
@@ -159,7 +178,7 @@ const MainLayout = () => {
                             <IoIosNotifications className='fs-3' />
                             <span className='badge bg-warning rounded-circle py-1 position-absolute'>3</span>
                         </div>
-                        <div className='d-flex align-items-center gap-3'>
+                        <div className='d-flex align-items-center gap-3 dropdown'>
                             <div>
                                 <img
                                     width={32}
@@ -168,9 +187,13 @@ const MainLayout = () => {
                                     alt=""
                                 />
                             </div>
-                            <div>
+                            <div type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h5 className='mb-0'>Sonal Sengar</h5>
                                 <p className='mb-0'>sengarsonal13@gmail.com</p>
+                            </div>
+                            <div className="dropdown-menu">
+                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "line-height": "20px" }} to="/">View Profile</Link></li>
+                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "line-height": "20px" }} to="/">Signout</Link></li>
                             </div>
                         </div>
                     </div>
