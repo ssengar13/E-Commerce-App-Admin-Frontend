@@ -36,17 +36,29 @@ export const authSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.isSuccess = true;
-                state.user = action.payload;
+                // Decide the condition for success or error here
+                if (action.payload?.error) {
+                    state.isLoading = false;
+                    state.isError = true;
+                    state.isSuccess = false;
+                    state.message = action.payload.error;
+                    state.user = null;
+                } else {
+                    state.isLoading = false;
+                    state.isSuccess = true;
+                    state.isError = false;
+                    state.user = action.payload;
+                }
             })
-            .addCase(login.fulfilled, (state, action) => {
+            .addCase(login.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
+                state.message = action.payload || "Something went wrong!";
                 state.user = null;
             });
     },
 });
+
 
 export default authSlice.reducer;
