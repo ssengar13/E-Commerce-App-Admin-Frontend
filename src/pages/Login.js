@@ -54,23 +54,24 @@ const Login = () => {
                     <CustomInput
                         type="text"
                         label="Email Address"
-                        id="email"
+                        i_id="email"
                         name="email"
-                        onChng={formik.handleChange("email")}
-                        onBlr={formik.handleBlur("email")}
                         val={formik.values.email}
+                        onCh={formik.handleChange("email")} // Handle typing
+                        onBlr={formik.handleBlur("email")} // Handle leaving the field
                     />
                     <div className="error mt-2">
                         {formik.touched.email && formik.errors.email}
                     </div>
+
                     <CustomInput
                         type="password"
                         label="Password"
-                        id="pass"
+                        i_id="pass"
                         name="password"
-                        onChng={formik.handleChange("password")}
-                        onBlr={formik.handleBlur("password")}
                         val={formik.values.password}
+                        onCh={formik.handleChange("password")}
+                        onBlr={formik.handleBlur("password")}
                     />
                     <div className="error mt-2">
                         {formik.touched.password && formik.errors.password}
