@@ -1,34 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from "antd";
+import { useDispatch, useSelector } from 'react-redux';
+import { getBrands } from '../features/brand/brandSlice';
+import { BiEdit } from "react-icons/bi";
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom"
+
 const columns = [
     {
         title: "SNo",
         dataIndex: "key",
     },
     {
-        title: "Name",
-        dataIndex: "name",
+        title: "Title",
+        dataIndex: "title",
     },
     {
-        title: "Product",
-        dataIndex: "product",
-    },
-    {
-        title: "Status",
-        dataIndex: "staus",
+        title: "Action",
+        dataIndex: "action",
     },
 ];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-    data1.push({
-        key: i,
-        name: `Edward King ${i}`,
-        product: 32,
-        staus: `London, Park Lane no. ${i}`,
-    });
-}
 
 const BrandList = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getBrands());
+    }, []);
+
+    const brandState = useSelector((state) => state.brand.brands);
+    const data1 = [];
+    for (let i = 0; i < brandState.length; i++) {
+        data1.push({
+            key: i + 1,
+            title: brandState[i].title,
+            action: <>
+                <Link to="/"><BiEdit className='fs-4 text-success' /></Link>
+                <Link to="/"><MdDelete className='fs-4 ms-3 text-danger' /></Link>
+            </>
+        });
+    }
     return (
         <div>
             <h3 className="mb-4 title">Brands</h3>
