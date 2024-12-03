@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from "antd";
+import { useDispatch, useSelector } from 'react-redux';
+import { BiEdit } from "react-icons/bi";
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom"
+import { getCoupons } from '../features/coupon/couponSlice';
+
 const columns = [
     {
         title: "SNo",
@@ -10,25 +16,39 @@ const columns = [
         dataIndex: "name",
     },
     {
-        title: "Product",
-        dataIndex: "product",
+        title: "Expiry",
+        dataIndex: "expiry",
     },
     {
-        title: "Status",
-        dataIndex: "staus",
+        title: "Discount",
+        dataIndex: "discount",
+    },
+    {
+        title: "Action",
+        dataIndex: "action",
     },
 ];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-    data1.push({
-        key: i,
-        name: `Edward King ${i}`,
-        product: 32,
-        staus: `London, Park Lane no. ${i}`,
-    });
-}
 
 const CouponList = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getCoupons());
+    }, []);
+
+    const couponState = useSelector((state) => state.coupon.coupons);
+    const data1 = [];
+    for (let i = 0; i < couponState.length; i++) {
+        data1.push({
+            key: i + 1,
+            name: couponState[i].name,
+            expiry: couponState[i].expiry,
+            discount: couponState[i].discount,
+            action: <>
+                <Link to="/"><BiEdit className='fs-4 text-success' /></Link>
+                <Link to="/"><MdDelete className='fs-4 ms-3 text-danger' /></Link>
+            </>
+        });
+    }
     return (
         <div>
             <h3 className="mb-4 title">Coupon List</h3>
