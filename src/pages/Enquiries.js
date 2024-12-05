@@ -52,7 +52,13 @@ const Enquiries = () => {
             email: enquiryState[i].email,
             mobile: enquiryState[i].mobile,
             comment: enquiryState[i].comment,
-            status: enquiryState[i].status,
+            status: (
+                <>
+                    <select name='' id='' className='form-select form-control'>
+                        <option value="">Set Status</option>
+                    </select>
+                </>
+            ),
             action: <>
                 <Link to="/"><BiEdit className='fs-4 text-success' /></Link>
                 <Link to="/"><MdDelete className='fs-4 ms-3 text-danger' /></Link>
