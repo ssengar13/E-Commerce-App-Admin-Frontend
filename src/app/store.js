@@ -3,12 +3,12 @@ import authReducer from '../features/auth/authSlice';
 import customerReducer from '../features/customers/customerSlice';
 import productReducer from '../features/product/productSlice';
 import brandReducer from '../features/brand/brandSlice';
-import colorReducer from '../features/color/colorSlice'
-import categoryReducer from '../features/productCategory/productCategorySlice'
-import blogReducer from '../features/blog/blogSlice'
-import blogCategoryReducer from '../features/blogCategory/blogCategorySlice'
-import enquiryReducer from '../features/enquiry/enquirySlice'
-import couponReducer from '../features/coupon/couponSlice'
+import colorReducer from '../features/color/colorSlice';
+import categoryReducer from '../features/productCategory/productCategorySlice';
+import blogReducer from '../features/blog/blogSlice';
+import blogCategoryReducer from '../features/blogCategory/blogCategorySlice';
+import enquiryReducer from '../features/enquiry/enquirySlice';
+import couponReducer from '../features/coupon/couponSlice';
 
 
 export const store = configureStore({

@@ -192,8 +192,8 @@ const MainLayout = () => {
                                 <p className='mb-0'>sengarsonal13@gmail.com</p>
                             </div>
                             <div className="dropdown-menu">
-                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "line-height": "20px" }} to="/">View Profile</Link></li>
-                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "line-height": "20px" }} to="/">Signout</Link></li>
+                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "lineHeight": "20px" }} to="/">View Profile</Link></li>
+                                <li><Link className="dropdown-item py-1 mb-1" style={{ "height": "auto", "lineHeight": "20px" }} to="/">Signout</Link></li>
                             </div>
                         </div>
                     </div>
