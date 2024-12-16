@@ -9,7 +9,10 @@ import { getBrands } from '../features/brand/brandSlice'
 import { getProductsCategory } from '../features/productCategory/productCategorySlice';
 import { getColors } from '../features/color/colorSlice';
 import Multiselect from 'react-widgets/Multiselect';
+import Dropzone from 'react-dropzone'
 import "react-widgets/styles.css";
+import { deleteImg, uploadImg } from '../features/upload/uploadSlice';
+import { createProducts } from '../features/product/productSlice';
 
 let schema = yup.object().shape({
     title: yup.string().required("Title is Required"),
@@ -24,22 +27,37 @@ let schema = yup.object().shape({
 const AddProduct = () => {
     const dispatch = useDispatch();
     const [color, setColor] = useState([]);
+    const [images, setImages] = useState([]);
+
     useEffect(() => {
         dispatch(getBrands());
         dispatch(getProductsCategory());
         dispatch(getColors());
-        formik.values.color = color;
     }, []);
+
     const brandState = useSelector((state) => state.brand.brands);
     const productCategoryState = useSelector((state) => state.category.categories);
     const colorState = useSelector((state) => state.color.colors);
-    const colors = []
+    const imageState = useSelector((state) => state.upload.images);
+    const colors = [];
     colorState.forEach(i => {
         colors.push({
             _id: i._id,
             color: i.title,
         })
     });
+
+    const img = [];
+    imageState.forEach(i => {
+        img.push({
+            public_id: i.public_id,
+            url: i.url,
+        });
+    });
+    useEffect(() => {
+        formik.values.color = color;
+        formik.values.images = img;
+    }, [color, img])
 
     const formik = useFormik({
         initialValues: {
@@ -48,12 +66,13 @@ const AddProduct = () => {
             price: "",
             brand: "",
             category: "",
-            color: "",
+            color: [],
             quantity: "",
+            images: [],
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values));
+            dispatch(createProducts(values));
         },
     });
     const [desc, setDesc] = useState();
@@ -116,6 +135,29 @@ const AddProduct = () => {
                     <div className="error">{
                         formik.touched.quantity && formik.errors.quantity
                     }</div>
+                    <div className='mt-3 bg-white border-1 p-5 text-center'>
+                        <Dropzone onDrop={acceptedFiles => dispatch(uploadImg(acceptedFiles))}>
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>Drag 'n' drop some files here, or click to select files</p>
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </div>
+                    <div className="showimages mt-4 d-flex flex-wrap gap-3">
+                        {imageState.map((i, j) => {
+                            return (
+                                <div key={j} className='position-relative'>
+                                    <button type='button' onClick={() => dispatch(deleteImg(i.public_id))} className='position-absolute btn-close btn-sm' style={{ top: "10px", right: "10px" }}></button>
+                                    <img src={i.url} alt="" width={200} height={200} />
+                                </div>
+                            );
+                        })}
+
+                    </div>
                     <button className='btn btn-success mt-3 border-0 rounded-3' type='submit'>Add Product</button>
                 </form>
             </div>
