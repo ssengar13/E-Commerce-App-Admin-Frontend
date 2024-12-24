@@ -46,3 +46,8 @@
     font-family: Roboto !important;
     color: var(--color-828599);
 }
+
+.ant-select-dropdown .ant-select-item-option {
+    color: black !important;
+    /* Ensure all text inside options is black */
+}

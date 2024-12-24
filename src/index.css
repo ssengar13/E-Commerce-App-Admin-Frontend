@@ -67,7 +67,13 @@ main::-webkit-scrollbar {
     right: -6px;
 }
 
+
 .error {
     color: red;
     font-size: 12px;
+}
+
+.ant-select-dropdown .ant-select-item-option {
+    color: black !important;
+    /* Ensure all text inside options is black */
 }

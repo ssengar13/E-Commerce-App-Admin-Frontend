@@ -13,6 +13,8 @@ import { Button, Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -207,6 +209,18 @@ const MainLayout = () => {
                         borderRadius: borderRadiusLG,
                     }}
                 >
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={true}
+                        closeOnClick={false}
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                    />
                     <Outlet />
                 </Content>
             </Layout>
