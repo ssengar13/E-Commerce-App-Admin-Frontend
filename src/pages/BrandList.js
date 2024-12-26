@@ -34,7 +34,7 @@ const BrandList = () => {
             key: i + 1,
             title: brandState[i].title,
             action: <>
-                <Link to="/"><BiEdit className='fs-4 text-success' /></Link>
+                <Link to={`/admin/brand/${brandState[i]._id}`}><BiEdit className='fs-4 text-success' /></Link>
                 <Link to="/"><MdDelete className='fs-4 ms-3 text-danger' /></Link>
             </>
         });
