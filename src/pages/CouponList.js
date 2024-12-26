@@ -41,7 +41,7 @@ const CouponList = () => {
         data1.push({
             key: i + 1,
             name: couponState[i].name,
-            expiry: couponState[i].expiry,
+            expiry: new Date(couponState[i].expiry).toLocaleDateString(),
             discount: couponState[i].discount,
             action: <>
                 <Link to="/"><BiEdit className='fs-4 text-success' /></Link>

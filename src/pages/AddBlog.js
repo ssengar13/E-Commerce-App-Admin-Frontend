@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getBlogsCategory } from '../features/blogCategory/blogCategorySlice';
-import { createBlog } from '../features/blog/blogSlice';
+import { createBlog, resetState } from '../features/blog/blogSlice';
 
 
 let schema = yup.object().shape({
@@ -65,6 +65,7 @@ const AddBlog = () => {
             dispatch(createBlog(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState());
                 navigate("/admin/blog-list")
             }, 1000);
         },

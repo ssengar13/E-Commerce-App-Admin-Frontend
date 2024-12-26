@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { createProductCategory } from '../features/productCategory/productCategorySlice';
+import { createProductCategory, resetState } from '../features/productCategory/productCategorySlice';
 
 let schema = yup.object().shape({
     title: yup.string().required("Category name is Required"),
@@ -35,6 +35,7 @@ const AddCategory = () => {
             dispatch(createProductCategory(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState());
                 navigate("/admin/category-list")
             }, 1000);
         },
