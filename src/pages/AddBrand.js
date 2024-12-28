@@ -58,7 +58,7 @@ const AddBrand = () => {
             setTimeout(() => {
                 dispatch(resetState());
                 navigate("/admin/brand-list")
-            }, 1000);
+            }, 500);
         },
     });
 
